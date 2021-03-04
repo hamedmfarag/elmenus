@@ -1,7 +1,7 @@
-import "semantic-ui-css/semantic.min.css";
+import Routes from "./routes";
 
 function App() {
-  return "Hello El-Menus";
+  return <Routes />;
 }
 
 export default App;
