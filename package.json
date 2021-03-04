@@ -12,6 +12,8 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
+    "prelocalApi": "node tools/apiServer/createMockDb.js",
+    "localApi": "node tools/apiServer/apiServer.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -34,5 +36,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "json-server": "^0.16.3"
   }
 }
