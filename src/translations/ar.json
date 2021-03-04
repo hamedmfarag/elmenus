@@ -1,1 +1,6 @@
-{}
+{
+  "SIGNIN.PAGE.TITLE": "تسجيل دخول",
+  "SIGNIN.PAGE.USERNAME": "إسم المستخدم",
+  "SIGNIN.PAGE.PASSWORD": "كلمة السر",
+  "SIGNIN.PAGE.SIGNIN": "دخول"
+}

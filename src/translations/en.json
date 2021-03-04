@@ -1,1 +1,6 @@
-{}
+{
+  "SIGNIN.PAGE.TITLE": "Sign In",
+  "SIGNIN.PAGE.USERNAME": "Username",
+  "SIGNIN.PAGE.PASSWORD": "Password",
+  "SIGNIN.PAGE.SIGNIN": "Sign In"
+}
