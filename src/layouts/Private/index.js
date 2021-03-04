@@ -1,3 +1,10 @@
+import Header from "../../components/common/Header";
+
 export default function PrivateLayout(props) {
-  return <article>{props.children}</article>;
+  return (
+    <article>
+      <Header />
+      {props.children}
+    </article>
+  );
 }
