@@ -1,5 +1,6 @@
 {
   "COMMON.SERVER.ERROR": "حدث خطأ ما, يرجي المحاوله مرة اخرى!",
+  "COMMON.LABEL.SAVE": "Save",
   "SIGNIN.PAGE.TITLE": "تسجيل دخول",
   "SIGNIN.PAGE.USERNAME": "إسم المستخدم",
   "SIGNIN.PAGE.PASSWORD": "كلمة السر",
@@ -9,5 +10,8 @@
   "HEADER.COMPONENT.NAV.ADMIN": "المسئول",
   "HEADER.COMPONENT.WELCOME": "مرحبا, ",
   "HOME.PAGE.NOMENUFOUND": "لا توجد قائمة للمطعم!",
-  "HOME.PAGE.NOMENUITEMSFOUND": "لا يوجد قائمه!"
+  "HOME.PAGE.NOMENUITEMSFOUND": "لا يوجد قائمه!",
+  "ADMIN.ADDCATEGORY.TITLE": "",
+  "ADMIN.ADDCATEGORY.NAME": "",
+  "ADMIN.ADDCATEGORY.DESCRIPTION": ""
 }

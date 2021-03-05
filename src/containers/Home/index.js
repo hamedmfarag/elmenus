@@ -1,13 +1,5 @@
 import { useEffect, useState } from "react";
-import {
-  Grid,
-  Container,
-  Loader,
-  Segment,
-  Header,
-  Icon,
-  Item,
-} from "semantic-ui-react";
+import { Grid, Loader, Segment, Header, Icon, Item } from "semantic-ui-react";
 import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
 
@@ -29,7 +21,7 @@ export default function Home() {
   const fetchData = async () => {
     const [data, error] = await getMenuData();
     if (error) {
-      toast.error(t("COMMON.SERVER.ERROR"));
+      toast.error(error);
     } else {
       setMenu(data);
       // get first item as default selection
@@ -98,5 +90,5 @@ export default function Home() {
     );
   };
 
-  return <Container>{renderContent()} </Container>;
+  return renderContent();
 }

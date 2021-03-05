@@ -53,7 +53,7 @@ export default function SignIn(props) {
     );
 
     if (error) {
-      toast.error(t("SIGNIN.PAGE.USERORPASSNOTFOUND"));
+      toast.error(error);
     } else {
       userCTX.setUser(data);
       history.push(getRedirectUrl(route.location.search));

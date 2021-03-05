@@ -1,5 +1,7 @@
 const jsonServer = require("json-server");
 const path = require("path");
+const { v4: uuidv4 } = require("uuid");
+const _ = require("lodash");
 
 const server = jsonServer.create();
 const router = jsonServer.router(path.join(__dirname, "db.json"));
@@ -34,13 +36,13 @@ const baseUrl = "/api";
 // Declaring custom routes below. Add custom routes before JSON Server router
 server.use(
   jsonServer.rewriter({
-    [`${baseUrl}/menu`]: "/menu",
+    [`${baseUrl}/menu`]: "/categories",
   })
 );
 
 server.post(`${baseUrl}/signin`, (req, res, next) => {
-  const menu = router.db.get("menu").value();
-  const user = menu.users.find(
+  const users = router.db.get("users").value();
+  const user = users.find(
     (user) =>
       user.username === req.body.username &&
       user.password === req.body.password &&
@@ -56,7 +58,41 @@ server.post(`${baseUrl}/signin`, (req, res, next) => {
     });
   } else {
     res.statusCode = 404;
-    res.send({});
+    res.send({
+      code: 102,
+      message: "username_password_incorect",
+    });
+  }
+});
+
+server.post(`${baseUrl}/category`, (req, res, next) => {
+  const db = router.db;
+  const table = db.get("categories");
+
+  if (!req.body.name || !req.body.description) {
+    res.statusCode = 400;
+    res.send({
+      code: 100,
+      message: "fields_required",
+    });
+  } else {
+    const categories = router.db.get("categories").value();
+    const isExist = _.findIndex(categories, function (o) {
+      return o.name === req.body.name;
+    });
+
+    if (isExist !== -1) {
+      res.statusCode = 400;
+      res.send({
+        code: 101,
+        message: "already_exist",
+      });
+    } else {
+      const newCategory = { id: uuidv4(), ...req.body, items: [] };
+      table.push(newCategory).write();
+      res.statusCode = 200;
+      res.send(newCategory);
+    }
   }
 });
 

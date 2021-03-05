@@ -1,5 +1,7 @@
 {
   "COMMON.SERVER.ERROR": "Something went wrong, please try again later!",
+  "COMMON.REQUIRED": "Some Fields are missing!",
+  "COMMON.LABEL.SAVE": "Save",
   "SIGNIN.PAGE.TITLE": "Sign In",
   "SIGNIN.PAGE.USERNAME": "Username",
   "SIGNIN.PAGE.PASSWORD": "Password",
@@ -9,5 +11,10 @@
   "HEADER.COMPONENT.NAV.ADMIN": "Admin",
   "HEADER.COMPONENT.WELCOME": "Welcome, ",
   "HOME.PAGE.NOMENUFOUND": "No Menu Found!",
-  "HOME.PAGE.NOMENUITEMSFOUND": "No Menu Items Found!"
+  "HOME.PAGE.NOMENUITEMSFOUND": "No Menu Items Found!",
+  "ADMIN.ADDCATEGORY.TITLE": "Add Category",
+  "ADMIN.ADDCATEGORY.NAME": "Name",
+  "ADMIN.ADDCATEGORY.DESCRIPTION": "Description",
+  "ADMIN.ADDCATEGORY.SAVED": "{{name}} Category Saved Successfully!",
+  "ADMIN.ADDCATEGORY.ALREADYEXIST": "Category Already Exist"
 }

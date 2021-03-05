@@ -1,4 +1,4 @@
-function categoryMapper(category) {
+export function categoryMapper(category) {
   return {
     id: category.id,
     name: category.name,
@@ -20,16 +20,8 @@ function menuItemMapper(item) {
 }
 
 export function menuMapper(data) {
-  const arr = [];
-
-  if (data && typeof data === "object") {
-    for (const key in data) {
-      if (Object.hasOwnProperty.call(data, key)) {
-        const category = data[key];
-        arr.push(categoryMapper(category));
-      }
-    }
+  if (data.length > 0) {
+    return data.map((category) => categoryMapper(category));
   }
-
-  return arr;
+  return [];
 }

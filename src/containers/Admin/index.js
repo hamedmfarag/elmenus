@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { useHistory } from "react-router-dom";
 
+import AddCategory from "./partials/AddCategory";
+
 import { UserContext } from "../../userContext";
 import rolesEnum from "../../resources/rolesEnum";
 
@@ -14,5 +16,9 @@ export default function Admin() {
     );
   }
 
-  return "Admin";
+  return (
+    <>
+      <AddCategory />
+    </>
+  );
 }
