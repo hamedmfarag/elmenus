@@ -1,9 +1,12 @@
 {
+  "COMMON.SERVER.ERROR": "Something went wrong, please try again later!",
   "SIGNIN.PAGE.TITLE": "Sign In",
   "SIGNIN.PAGE.USERNAME": "Username",
   "SIGNIN.PAGE.PASSWORD": "Password",
   "SIGNIN.PAGE.SIGNIN": "Sign In",
   "SIGNIN.PAGE.USERORPASSNOTFOUND": "Username or password is incorrect!",
   "HEADER.COMPONENT.NAV.ADMIN": "Admin",
-  "HEADER.COMPONENT.WELCOME": "Welcome, "
+  "HEADER.COMPONENT.WELCOME": "Welcome, ",
+  "HOME.PAGE.NOMENUFOUND": "No Menu Found!",
+  "HOME.PAGE.NOMENUITEMSFOUND": "No Menu Items Found!"
 }

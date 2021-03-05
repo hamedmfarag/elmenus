@@ -5,5 +5,7 @@
   "SIGNIN.PAGE.SIGNIN": "دخول",
   "SIGNIN.PAGE.USERORPASSNOTFOUND": "إسم المستخدم او كلمة المرور خاطئة!",
   "HEADER.COMPONENT.NAV.ADMIN": "المسئول",
-  "HEADER.COMPONENT.WELCOME": "مرحبا, "
+  "HEADER.COMPONENT.WELCOME": "مرحبا, ",
+  "HOME.PAGE.NOMENUFOUND": "No Menu Found!",
+  "HOME.PAGE.NOMENUITEMSFOUND": "No Menu Items Found!"
 }
