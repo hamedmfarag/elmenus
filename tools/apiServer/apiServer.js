@@ -11,7 +11,7 @@ server.use(jsonServer.bodyParser);
 
 // Simulate delay on all requests
 server.use((req, res, next) => {
-  setTimeout(next, 100);
+  setTimeout(next, 200);
 });
 
 server.use((req, res, next) => {
@@ -37,6 +37,28 @@ server.use(
     [`${baseUrl}/menu`]: "/menu",
   })
 );
+
+server.post(`${baseUrl}/signin`, (req, res, next) => {
+  const menu = router.db.get("menu").value();
+  const user = menu.users.find(
+    (user) =>
+      user.username === req.body.username &&
+      user.password === req.body.password &&
+      user.role === "admin"
+  );
+
+  if (user) {
+    res.statusCode = 200;
+    res.send({
+      id: user.id,
+      username: user.username,
+      role: user.role,
+    });
+  } else {
+    res.statusCode = 404;
+    res.send({});
+  }
+});
 
 // Use default router
 server.use(router);

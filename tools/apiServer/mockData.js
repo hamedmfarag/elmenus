@@ -1,4 +1,8 @@
 const menu = {
+  users: [
+    { id: 125459865, username: "admin", password: "admin", role: "admin" },
+    { id: 874265, username: "user", password: "user", role: "user" },
+  ],
   categories: [
     {
       id: 80877,
