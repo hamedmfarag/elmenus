@@ -1,11 +1,13 @@
 {
+  "COMMON.SERVER.ERROR": "حدث خطأ ما, يرجي المحاوله مرة اخرى!",
   "SIGNIN.PAGE.TITLE": "تسجيل دخول",
   "SIGNIN.PAGE.USERNAME": "إسم المستخدم",
   "SIGNIN.PAGE.PASSWORD": "كلمة السر",
   "SIGNIN.PAGE.SIGNIN": "دخول",
   "SIGNIN.PAGE.USERORPASSNOTFOUND": "إسم المستخدم او كلمة المرور خاطئة!",
+  "SIGNIN.PAGE.WELCOMEMESSAGE": "Log-in to Admin Pages",
   "HEADER.COMPONENT.NAV.ADMIN": "المسئول",
   "HEADER.COMPONENT.WELCOME": "مرحبا, ",
-  "HOME.PAGE.NOMENUFOUND": "No Menu Found!",
-  "HOME.PAGE.NOMENUITEMSFOUND": "No Menu Items Found!"
+  "HOME.PAGE.NOMENUFOUND": "لا توجد قائمة للمطعم!",
+  "HOME.PAGE.NOMENUITEMSFOUND": "لا يوجد قائمه!"
 }
