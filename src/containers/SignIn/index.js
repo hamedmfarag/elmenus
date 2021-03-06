@@ -63,35 +63,32 @@ export default function SignIn(props) {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <>
       <Header as="h2" color="teal" textAlign="center">
         {t("SIGNIN.PAGE.WELCOMEMESSAGE")}
       </Header>
-      <Segment stacked textAlign="left">
-        <Form.Field>
-          <label>{t("SIGNIN.PAGE.USERNAME")}</label>
-          <input
+      <Segment textAlign="left">
+        <Form onSubmit={handleSubmit}>
+          <Form.Input
             required
-            type="text"
             name="username"
+            label={t("SIGNIN.PAGE.USERNAME")}
             placeholder={t("SIGNIN.PAGE.USERNAME")}
           />
-        </Form.Field>
-        <Form.Field>
-          <label>{t("SIGNIN.PAGE.PASSWORD")}</label>
-          <input
+          <Form.Input
             required
             type="password"
             name="password"
+            label={t("SIGNIN.PAGE.PASSWORD")}
             placeholder={t("SIGNIN.PAGE.PASSWORD")}
           />
-        </Form.Field>
-        <Divider />
-        <Button type="submit" disabled={isSubmitting}>
-          <Loader active={isLoading} inline size="mini" />{" "}
-          {t("SIGNIN.PAGE.SIGNIN")}
-        </Button>
+          <Divider />
+          <Button type="submit" disabled={isSubmitting}>
+            <Loader active={isLoading} inline size="mini" />{" "}
+            {t("SIGNIN.PAGE.SIGNIN")}
+          </Button>
+        </Form>
       </Segment>
-    </Form>
+    </>
   );
 }

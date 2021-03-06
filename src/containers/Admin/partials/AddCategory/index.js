@@ -41,36 +41,33 @@ export default function AddCategory(props) {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <>
       <Header as="h2" color="teal" textAlign="center">
         {t("ADMIN.ADDCATEGORY.TITLE")}
       </Header>
-      <Segment stacked textAlign="left">
-        <Form.Field>
-          <label>{t("ADMIN.ADDCATEGORY.NAME")}</label>
-          <input
+      <Segment textAlign="left">
+        <Form onSubmit={handleSubmit}>
+          <Form.Input
             required
-            type="text"
-            sign
             name="name"
+            label={t("ADMIN.ADDCATEGORY.NAME")}
             placeholder={t("ADMIN.ADDCATEGORY.NAME")}
           />
-        </Form.Field>
-        <Form.Field>
-          <label>{t("ADMIN.ADDCATEGORY.DESCRIPTION")}</label>
-          <input
+          <Form.Field
             required
-            type="text"
+            label={t("ADMIN.ADDCATEGORY.DESCRIPTION")}
             name="description"
             placeholder={t("ADMIN.ADDCATEGORY.DESCRIPTION")}
+            control="textarea"
+            rows="3"
           />
-        </Form.Field>
-        <Divider />
-        <Button type="submit" disabled={isSubmitting}>
-          <Loader active={isLoading} inline size="mini" />{" "}
-          {t("COMMON.LABEL.SAVE")}
-        </Button>
+          <Divider />
+          <Button type="submit" disabled={isSubmitting}>
+            <Loader active={isLoading} inline size="mini" />{" "}
+            {t("COMMON.LABEL.SAVE")}
+          </Button>
+        </Form>
       </Segment>
-    </Form>
+    </>
   );
 }

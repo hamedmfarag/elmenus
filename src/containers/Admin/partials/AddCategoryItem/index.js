@@ -24,62 +24,64 @@ export default function AddCategoryItem(props) {
     setIsLoading(true);
     setIsSubmitting(true);
 
-    const [item, error] = await addCategoryItem(
-      data.categoryId,
-      e.target.name.value,
-      e.target.description.value,
-      e.target.price.value
-    );
 
-    if (error) {
-      toast.error(error);
+    if (isNaN(Number(e.target.price.value))) {
+      toast.warn(t("ADMIN.ADDCATEGORYITEM.PRICE_SHOULDNUMBER"));
     } else {
-      // send up the data to parent to insert it into the accordion
-      actions.onAddItem(item);
-      toast.success(t("ADMIN.ADDCATEGORYITEM.SAVED", { name: item.name }));
+      const [item, error] = await addCategoryItem(
+        data.categoryId,
+        e.target.name.value,
+        e.target.description.value,
+        e.target.price.value
+      );
+      if (error) {
+        toast.error(error);
+      } else {
+        // send up the data to parent to insert it into the accordion
+        actions.onAddItem(item);
+        toast.success(t("ADMIN.ADDCATEGORYITEM.SAVED", { name: item.name }));
+      }
     }
     setIsLoading(false);
     setIsSubmitting(false);
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <>
       <Header as="h4">{t("ADMIN.ADDCATEGORYITEM.TITLE")}</Header>
-      <Segment stacked textAlign="left">
-        <Form.Field>
-          <label>{t("ADMIN.ADDCATEGORYITEM.NAME")}</label>
-          <input
+      <Segment textAlign="left">
+        <Form onSubmit={handleSubmit}>
+          <Form.Group widths="equal">
+            <Form.Input
+              fluid
+              required
+              name="name"
+              label={t("ADMIN.ADDCATEGORYITEM.NAME")}
+              placeholder={t("ADMIN.ADDCATEGORYITEM.NAME")}
+            />
+            <Form.Input
+              fluid
+              required
+              name="price"
+              label={t("ADMIN.ADDCATEGORYITEM.PRICE")}
+              placeholder={t("ADMIN.ADDCATEGORYITEM.PRICE")}
+            />
+          </Form.Group>
+          <Form.Field
             required
-            type="text"
-            sign
-            name="name"
-            placeholder={t("ADMIN.ADDCATEGORYITEM.NAME")}
-          />
-        </Form.Field>
-        <Form.Field>
-          <label>{t("ADMIN.ADDCATEGORYITEM.DESCRIPTION")}</label>
-          <input
-            required
-            type="text"
+            label={t("ADMIN.ADDCATEGORYITEM.DESCRIPTION")}
             name="description"
             placeholder={t("ADMIN.ADDCATEGORYITEM.DESCRIPTION")}
+            control="textarea"
+            rows="3"
           />
-        </Form.Field>
-        <Form.Field>
-          <label>{t("ADMIN.ADDCATEGORYITEM.PRICE")}</label>
-          <input
-            required
-            type="text"
-            name="price"
-            placeholder={t("ADMIN.ADDCATEGORYITEM.PRICE")}
-          />
-        </Form.Field>
-        <Divider />
-        <Button type="submit" disabled={isSubmitting}>
-          <Loader active={isLoading} inline size="mini" />{" "}
-          {t("COMMON.LABEL.SAVE")}
-        </Button>
+          <Divider />
+          <Button type="submit" disabled={isSubmitting}>
+            <Loader active={isLoading} inline size="mini" />{" "}
+            {t("COMMON.LABEL.SAVE")}
+          </Button>
+        </Form>
       </Segment>
-    </Form>
+    </>
   );
 }
