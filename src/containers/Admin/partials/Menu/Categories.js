@@ -30,7 +30,6 @@ function CategoryContent(props) {
 }
 
 export default function Categories(props) {
-    debugger;
   const { data, actions } = props;
 
   return data.map((cat, catIndex) => {
