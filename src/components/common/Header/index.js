@@ -5,8 +5,6 @@ import { Button, Container, Menu, Icon, Label } from "semantic-ui-react";
 
 import { UserContext } from "../../../userContext";
 
-import "./styles.css";
-
 export default function Header() {
   const { t } = useTranslation();
   const history = useHistory();
