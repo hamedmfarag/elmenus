@@ -1,22 +1,14 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import update from "immutability-helper";
-import {
-  Accordion,
-  Loader,
-  Segment,
-  Header,
-  Icon,
-  Button,
-  Label,
-  Message,
-  Divider,
-} from "semantic-ui-react";
+import { Accordion, Loader, Segment, Header, Icon } from "semantic-ui-react";
 import { useTranslation } from "react-i18next";
 
-import AddCategoryItem from "../AddCategoryItem";
+import Categories from "./Categories";
 
 import { getMenuData } from "../../../../apis";
+
+import "./styles.css";
 
 export default function Menu(props) {
   const { data } = props;
@@ -54,60 +46,7 @@ export default function Menu(props) {
     });
     setMenu(updatedMenu);
   };
-
-  const prepareAccordionData = () => {
-    return menu.map((cat, catIndex) => {
-      return {
-        key: cat.id,
-        title: cat.name,
-        content: {
-          content: (
-            <div>
-              <div>
-                FOOORM (Cat. Name, Cat. Description)
-                <Divider />
-                <AddCategoryItem
-                  data={{ categoryId: cat.id }}
-                  actions={{
-                    onAddItem: (item) => handleAddItem(catIndex, item),
-                  }}
-                />
-              </div>
-              <Accordion.Accordion
-                panels={cat.items.map((item) => ({
-                  key: item.id,
-                  title: (
-                    <Accordion.Title>
-                      <Icon name="dropdown" />
-                      {item.name}
-                      <Button.Group position="right">
-                        <Button size="mini">Edit</Button>
-                        <Button.Or />
-                        <Button size="mini" color="red">
-                          Delete
-                        </Button>
-                      </Button.Group>
-                    </Accordion.Title>
-                  ),
-                  content: {
-                    content: (
-                      <div>
-                        <Message>
-                          <Message.Header>Description</Message.Header>
-                          <p>{item.description}</p>
-                        </Message>
-                        <Label size="large">{`${item.price} EGP`}</Label>
-                      </div>
-                    ),
-                  },
-                }))}
-              ></Accordion.Accordion>
-            </div>
-          ),
-        },
-      };
-    });
-  };
+  //e.stopPropagation()
 
   if (isLoading) {
     return <Loader active={isLoading} />;
@@ -125,11 +64,19 @@ export default function Menu(props) {
   }
 
   return (
-    <Accordion
-      defaultActiveIndex={0}
-      panels={prepareAccordionData()}
-      styled
-      fluid
-    />
+    <>
+      <Header as="h2" color="teal" textAlign="left">
+        {t("ADMIN.MENU.TITLE")}
+      </Header>
+      <Accordion
+        defaultActiveIndex={0}
+        panels={Categories({
+          data: menu,
+          actions: { onAddItem: handleAddItem },
+        })}
+        styled
+        fluid
+      />
+    </>
   );
 }

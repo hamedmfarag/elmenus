@@ -42,7 +42,7 @@ export default function AddCategory(props) {
 
   return (
     <>
-      <Header as="h2" color="teal" textAlign="center">
+      <Header as="h2" color="teal" textAlign="left">
         {t("ADMIN.ADDCATEGORY.TITLE")}
       </Header>
       <Segment textAlign="left">

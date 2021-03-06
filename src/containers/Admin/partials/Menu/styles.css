@@ -1,0 +1,12 @@
+.category-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.category-item-content {
+}
+
+.category-item-content__actions {
+  text-align: right;
+}

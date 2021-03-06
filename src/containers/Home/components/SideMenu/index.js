@@ -7,6 +7,7 @@ export default function SideMenu(props) {
   const renderMenuItems = (items) => {
     return items.map((item) => (
       <Menu.Item
+        key={item.id}
         name={item.name}
         active={selectedCategory.id === item.id}
         onClick={() => actions.getSelectedTab(item)}

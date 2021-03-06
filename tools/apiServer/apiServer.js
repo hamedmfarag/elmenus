@@ -102,7 +102,6 @@ server.post(`${baseUrl}/category`, (req, res, next) => {
 server.post(`${baseUrl}/category/item`, (req, res, next) => {
   const db = router.db;
   const table = db.get("categories");
-  debugger;
 
   if (
     !req.body.catId ||
@@ -133,8 +132,8 @@ server.post(`${baseUrl}/category/item`, (req, res, next) => {
         items: [...categories[catIndex].items, newCategoryItem],
       };
 
-      table[catIndex] = updatedCategory;
-      table.write();
+      // table[catIndex] = updatedCategory;
+      // table.write();
 
       res.statusCode = 200;
       res.send(newCategoryItem);

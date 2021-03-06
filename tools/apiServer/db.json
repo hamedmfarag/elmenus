@@ -6,12 +6,7 @@
       "password": "admin",
       "role": "admin"
     },
-    {
-      "id": 874265,
-      "username": "user",
-      "password": "user",
-      "role": "user"
-    }
+    { "id": 874265, "username": "user", "password": "user", "role": "user" }
   ],
   "categories": [
     {
@@ -91,12 +86,6 @@
           "price": 34.834
         }
       ]
-    },
-    {
-      "id": "831c7c9e-6575-4508-b204-0b2ce8522e5e",
-      "name": "Lhale Ke",
-      "description": "sd",
-      "items": []
     }
   ]
 }
