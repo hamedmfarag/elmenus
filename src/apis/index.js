@@ -83,3 +83,24 @@ export async function addCategoryItem(catId, name, description, price) {
     return [mappedUser, undefined];
   }
 }
+
+export async function editCategory(id, name, description) {
+  const [response, error] = await handleAsync(
+    requester({
+      method: "PUT",
+      url: process.env.REACT_APP_CATEGORY_API_URL,
+      data: {
+        id,
+        name,
+        description,
+      },
+    })
+  );
+
+  if (error) {
+    return [undefined, errorBuilderMessage(error)];
+  } else {
+    const mappedUser = categoryMapper(response.data);
+    return [mappedUser, undefined];
+  }
+}

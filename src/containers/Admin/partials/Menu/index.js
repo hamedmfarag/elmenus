@@ -1,10 +1,18 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import update from "immutability-helper";
-import { Accordion, Loader, Segment, Header, Icon } from "semantic-ui-react";
+import {
+  Accordion,
+  Loader,
+  Segment,
+  Header,
+  Icon,
+  Modal,
+} from "semantic-ui-react";
 import { useTranslation } from "react-i18next";
 
 import Categories from "./Categories";
+import EditCategory from "../EditCategory";
 
 import { getMenuData } from "../../../../apis";
 
@@ -14,8 +22,10 @@ export default function Menu(props) {
   const { data } = props;
   const { t } = useTranslation();
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [menu, setMenu] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [categoryDataToEdit, setCategoryDataToEdit] = useState({});
 
   useEffect(() => {
     fetchData();
@@ -40,13 +50,29 @@ export default function Menu(props) {
     }
   };
 
+  const handleCategoryEdit = (category) => {
+    setIsModalOpen(true);
+    setCategoryDataToEdit(category);
+  };
+
   const handleAddItem = (catIndex, item) => {
     const updatedMenu = update(menu, {
       [catIndex]: { items: { $unshift: [item] } },
     });
     setMenu(updatedMenu);
   };
-  //e.stopPropagation()
+
+  const handleEditedCategory = (editedCategory) => {
+    const categoryIndex = menu.findIndex(
+      (item) => item.id === editedCategory.id
+    );
+
+    const updatedMenu = update(menu, {
+      [categoryIndex]: { $set: editedCategory },
+    });
+    setMenu(updatedMenu);
+    setIsModalOpen(false);
+  };
 
   if (isLoading) {
     return <Loader active={isLoading} />;
@@ -72,11 +98,30 @@ export default function Menu(props) {
         defaultActiveIndex={0}
         panels={Categories({
           data: menu,
-          actions: { onAddItem: handleAddItem },
+          actions: {
+            onAddItem: handleAddItem,
+            onCategoryEdit: handleCategoryEdit,
+          },
         })}
         styled
         fluid
       />
+      <Modal
+        size="mini"
+        open={isModalOpen}
+        onClose={() => {
+          setCategoryDataToEdit({});
+          setIsModalOpen(false);
+        }}
+      >
+        <Modal.Header>{categoryDataToEdit.name}</Modal.Header>
+        <Modal.Content>
+          <EditCategory
+            data={categoryDataToEdit}
+            actions={{ editCategory: handleEditedCategory }}
+          />
+        </Modal.Content>
+      </Modal>
     </>
   );
 }

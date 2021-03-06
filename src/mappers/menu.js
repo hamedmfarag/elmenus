@@ -2,6 +2,7 @@ export function categoryMapper(category) {
   return {
     id: category.id,
     name: category.name,
+    description: category.description,
     items:
       (category.items &&
         Array.isArray(category.items) &&

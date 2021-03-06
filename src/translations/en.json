@@ -23,7 +23,8 @@
   "ADMIN.ADDCATEGORYITEM.DESCRIPTION": "Description",
   "ADMIN.ADDCATEGORYITEM.PRICE": "Price",
   "ADMIN.ADDCATEGORY.SAVED": "{{name}} Category Saved Successfully!",
+  "ADMIN.ADDCATEGORY.EDITED": "{{name}} Category Edited Successfully!",
   "ADMIN.ADDCATEGORYITEM.SAVED": "{{name}} Item Saved Successfully!",
-  "ADMIN.ADDCATEGORYITEM.PRICE_SHOULDNUMBER": "Price hould be a Number!",
+  "ADMIN.ADDCATEGORYITEM.PRICE_SHOULDNUMBER": "Price Should be a Number!",
   "ADMIN.ADDCATEGORY.ALREADYEXIST": "Category Already Exist"
 }

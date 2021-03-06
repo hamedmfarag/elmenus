@@ -91,9 +91,47 @@ server.post(`${baseUrl}/category`, (req, res, next) => {
       });
     } else {
       const newCategory = { id: uuidv4(), ...req.body, items: [] };
-      table.push(newCategory).write();
+      table.unshift(newCategory).write();
       res.statusCode = 200;
       res.send(newCategory);
+    }
+  }
+});
+
+// Edit Existing Category
+server.put(`${baseUrl}/category`, (req, res, next) => {
+  const db = router.db;
+  const table = db.get("categories");
+
+  if (!req.body.id || !req.body.name || !req.body.description) {
+    res.statusCode = 400;
+    res.send({
+      code: 100,
+      message: "fields_required",
+    });
+  } else {
+    const categories = router.db.get("categories").value();
+    const categoryIndex = _.findIndex(categories, function (o) {
+      return o.id === req.body.id;
+    });
+
+    if (categoryIndex === -1) {
+      res.statusCode = 400;
+      res.send({
+        code: 105,
+        message: "not_exist",
+      });
+    } else {
+      categories[categoryIndex] = {
+        id: req.body.id,
+        name: req.body.name,
+        description: req.body.description,
+        items: [...categories[categoryIndex].items],
+      };
+
+      table.write();
+      res.statusCode = 200;
+      res.send(categories[categoryIndex]);
     }
   }
 });
@@ -132,8 +170,8 @@ server.post(`${baseUrl}/category/item`, (req, res, next) => {
         items: [...categories[catIndex].items, newCategoryItem],
       };
 
-      // table[catIndex] = updatedCategory;
-      // table.write();
+      categories[catIndex] = updatedCategory;
+      table.write();
 
       res.statusCode = 200;
       res.send(newCategoryItem);

@@ -43,7 +43,15 @@ export default function Categories(props) {
               {cat.name}
             </section>
             <Button.Group position="right">
-              <Button size="mini" positive icon="pencil alternate" />
+              <Button
+                size="mini"
+                positive
+                icon="pencil alternate"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  actions.onCategoryEdit(cat);
+                }}
+              />
               <Button.Or />
               <Button size="mini" color="red" icon="trash alternate" />
             </Button.Group>
