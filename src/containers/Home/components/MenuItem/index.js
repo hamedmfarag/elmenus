@@ -5,11 +5,7 @@ export default function MenuItem(props) {
 
   return (
     <Item>
-      <Item.Image
-        size="tiny"
-        circular
-        src="https://w7.pngwing.com/pngs/815/308/png-transparent-sushi-japanese-cuisine-euclidean-vecteur-square-sushi-food-logo-happy-birthday-vector-images.png"
-      />
+      <Item.Image size="tiny" circular src={data.image} />
       <Item.Content>
         <Item.Header as="a">{data.name}</Item.Header>
         <Item.Meta>{data.description}</Item.Meta>

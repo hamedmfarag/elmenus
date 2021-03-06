@@ -66,7 +66,7 @@ export default function Home() {
         <Segment placeholder>
           <Header icon>
             <Icon name="pdf file outline" />
-            {t("HOME.PAGE.NOMENUFOUND")}
+            {t("COMMON.MESSAGE.NOMENUFOUND")}
           </Header>
         </Segment>
       );

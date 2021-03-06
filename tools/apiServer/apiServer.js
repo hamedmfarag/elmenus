@@ -40,6 +40,7 @@ server.use(
   })
 );
 
+//  Sign In
 server.post(`${baseUrl}/signin`, (req, res, next) => {
   const users = router.db.get("users").value();
   const user = users.find(
@@ -65,6 +66,7 @@ server.post(`${baseUrl}/signin`, (req, res, next) => {
   }
 });
 
+// Add new Category
 server.post(`${baseUrl}/category`, (req, res, next) => {
   const db = router.db;
   const table = db.get("categories");
@@ -92,6 +94,56 @@ server.post(`${baseUrl}/category`, (req, res, next) => {
       table.push(newCategory).write();
       res.statusCode = 200;
       res.send(newCategory);
+    }
+  }
+});
+
+// Add new Item to existing Category
+server.post(`${baseUrl}/category/item`, (req, res, next) => {
+  const db = router.db;
+  const table = db.get("categories");
+  debugger;
+
+  if (
+    !req.body.catId ||
+    !req.body.name ||
+    !req.body.description ||
+    !req.body.price
+  ) {
+    res.statusCode = 400;
+    res.send({
+      code: 100,
+      message: "fields_required",
+    });
+  } else {
+    const categories = router.db.get("categories").value();
+    const catIndex = _.findIndex(categories, function (o) {
+      return o.id === req.body.catId;
+    });
+
+    if (catIndex !== -1) {
+      const newCategoryItem = {
+        id: uuidv4(),
+        name: req.body.name,
+        description: req.body.description,
+        price: req.body.price,
+      };
+      const updatedCategory = {
+        ...categories[catIndex],
+        items: [...categories[catIndex].items, newCategoryItem],
+      };
+
+      table[catIndex] = updatedCategory;
+      table.write();
+
+      res.statusCode = 200;
+      res.send(newCategoryItem);
+    } else {
+      res.statusCode = 400;
+      res.send({
+        code: 105,
+        message: "not_exist",
+      });
     }
   }
 });

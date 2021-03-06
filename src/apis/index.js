@@ -1,7 +1,7 @@
 import requester from "../services/requester";
 import handleAsync from "../services/handleAsync";
 
-import { menuMapper, categoryMapper } from "../mappers/menu";
+import { menuMapper, categoryMapper, menuItemMapper } from "../mappers/menu";
 import { userMapper } from "../mappers/user";
 
 import errorBuilderMessage from "../services/errorBuilder";
@@ -58,6 +58,28 @@ export async function addCategory(name, description) {
     return [undefined, errorBuilderMessage(error)];
   } else {
     const mappedUser = categoryMapper(response.data);
+    return [mappedUser, undefined];
+  }
+}
+
+export async function addCategoryItem(catId, name, description, price) {
+  const [response, error] = await handleAsync(
+    requester({
+      method: "POST",
+      url: process.env.REACT_APP_CATEGORYITEM_API_URL,
+      data: {
+        catId,
+        name,
+        description,
+        price,
+      },
+    })
+  );
+
+  if (error) {
+    return [undefined, errorBuilderMessage(error)];
+  } else {
+    const mappedUser = menuItemMapper(response.data);
     return [mappedUser, undefined];
   }
 }

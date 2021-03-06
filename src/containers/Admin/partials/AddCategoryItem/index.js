@@ -7,14 +7,14 @@ import {
   Form,
   Divider,
   Loader,
-  Header,
   Segment,
+  Header,
 } from "semantic-ui-react";
 
-import { addCategory } from "../../../../apis";
+import { addCategoryItem } from "../../../../apis";
 
-export default function AddCategory(props) {
-  const { actions } = props;
+export default function AddCategoryItem(props) {
+  const { actions, data } = props;
   const { t } = useTranslation();
   const [isLoading, setIsLoading] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -24,17 +24,19 @@ export default function AddCategory(props) {
     setIsLoading(true);
     setIsSubmitting(true);
 
-    const [data, error] = await addCategory(
+    const [item, error] = await addCategoryItem(
+      data.categoryId,
       e.target.name.value,
-      e.target.description.value
+      e.target.description.value,
+      e.target.price.value
     );
 
     if (error) {
       toast.error(error);
     } else {
       // send up the data to parent to insert it into the accordion
-      actions.addNewCategory(data);
-      toast.success(t("ADMIN.ADDCATEGORY.SAVED", { name: data.name }));
+      actions.onAddItem(item);
+      toast.success(t("ADMIN.ADDCATEGORYITEM.SAVED", { name: item.name }));
     }
     setIsLoading(false);
     setIsSubmitting(false);
@@ -42,27 +44,34 @@ export default function AddCategory(props) {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Header as="h2" color="teal" textAlign="center">
-        {t("ADMIN.ADDCATEGORY.TITLE")}
-      </Header>
+      <Header as="h4">{t("ADMIN.ADDCATEGORYITEM.TITLE")}</Header>
       <Segment stacked textAlign="left">
         <Form.Field>
-          <label>{t("ADMIN.ADDCATEGORY.NAME")}</label>
+          <label>{t("ADMIN.ADDCATEGORYITEM.NAME")}</label>
           <input
             required
             type="text"
             sign
             name="name"
-            placeholder={t("ADMIN.ADDCATEGORY.NAME")}
+            placeholder={t("ADMIN.ADDCATEGORYITEM.NAME")}
           />
         </Form.Field>
         <Form.Field>
-          <label>{t("ADMIN.ADDCATEGORY.DESCRIPTION")}</label>
+          <label>{t("ADMIN.ADDCATEGORYITEM.DESCRIPTION")}</label>
           <input
             required
             type="text"
             name="description"
-            placeholder={t("ADMIN.ADDCATEGORY.DESCRIPTION")}
+            placeholder={t("ADMIN.ADDCATEGORYITEM.DESCRIPTION")}
+          />
+        </Form.Field>
+        <Form.Field>
+          <label>{t("ADMIN.ADDCATEGORYITEM.PRICE")}</label>
+          <input
+            required
+            type="text"
+            name="price"
+            placeholder={t("ADMIN.ADDCATEGORYITEM.PRICE")}
           />
         </Form.Field>
         <Divider />

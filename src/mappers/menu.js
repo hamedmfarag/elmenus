@@ -10,12 +10,15 @@ export function categoryMapper(category) {
   };
 }
 
-function menuItemMapper(item) {
+export function menuItemMapper(item) {
   return {
     id: item.id,
     name: item.name,
     description: item.description,
     price: item.price,
+    image:
+      item.image ||
+      "https://w7.pngwing.com/pngs/815/308/png-transparent-sushi-japanese-cuisine-euclidean-vecteur-square-sushi-food-logo-happy-birthday-vector-images.png",
   };
 }
 

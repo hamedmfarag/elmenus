@@ -17,6 +17,9 @@ export default function errorBuilder(error) {
       case 102:
         return i18n.t("SIGNIN.PAGE.USERORPASSNOTFOUND");
 
+      case 105:
+        return i18n.t("COMMON.ITEMNOTEXIST");
+
       default:
         return i18n.t("COMMON.SERVER.ERROR");
     }

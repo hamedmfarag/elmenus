@@ -1,7 +1,9 @@
 {
   "COMMON.SERVER.ERROR": "Something went wrong, please try again later!",
   "COMMON.REQUIRED": "Some Fields are missing!",
+  "COMMON.ITEMNOTEXIST": "Not Exist!",
   "COMMON.LABEL.SAVE": "Save",
+  "COMMON.MESSAGE.NOMENUFOUND": "No Menu Found!",
   "SIGNIN.PAGE.TITLE": "Sign In",
   "SIGNIN.PAGE.USERNAME": "Username",
   "SIGNIN.PAGE.PASSWORD": "Password",
@@ -10,11 +12,15 @@
   "SIGNIN.PAGE.WELCOMEMESSAGE": "Log-in to Admin Pages",
   "HEADER.COMPONENT.NAV.ADMIN": "Admin",
   "HEADER.COMPONENT.WELCOME": "Welcome, ",
-  "HOME.PAGE.NOMENUFOUND": "No Menu Found!",
   "HOME.PAGE.NOMENUITEMSFOUND": "No Menu Items Found!",
   "ADMIN.ADDCATEGORY.TITLE": "Add Category",
+  "ADMIN.ADDCATEGORYITEM.TITLE": "Add Category Item",
   "ADMIN.ADDCATEGORY.NAME": "Name",
   "ADMIN.ADDCATEGORY.DESCRIPTION": "Description",
+  "ADMIN.ADDCATEGORYITEM.NAME": "Name",
+  "ADMIN.ADDCATEGORYITEM.DESCRIPTION": "Description",
+  "ADMIN.ADDCATEGORYITEM.PRICE": "Price",
   "ADMIN.ADDCATEGORY.SAVED": "{{name}} Category Saved Successfully!",
+  "ADMIN.ADDCATEGORYITEM.SAVED": "{{name}} Item Saved Successfully!",
   "ADMIN.ADDCATEGORY.ALREADYEXIST": "Category Already Exist"
 }
