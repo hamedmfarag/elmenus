@@ -32,6 +32,7 @@ Your app is ready to be deployed!
 
 ## File Structure
 
+```
 | .env.development
 | .env.production
 +---public
@@ -42,12 +43,12 @@ Your app is ready to be deployed!
 | | routes.js
 | | userContext.js
 | +---apis
-| +---components  
+| +---components
 | +---config
 | +---containers
 | | +---404
-| | +---Admin  
-| | +---Home  
+| | +---Admin
+| | +---Home
 | | +---SignIn
 | +---layouts
 | | +---Auth
@@ -58,13 +59,14 @@ Your app is ready to be deployed!
 | +---services
 | | +---errorBuilder
 | | +---handleAsync
-| | +---requester  
-| \---translations  
+| | +---requester
+| \---translations
 \---tools
 \---apiServer
+```
 
 ## Known bugs
 
-1- Sort Menu Items not supported for Categories and Category Items.
-2- Delete Category Item not handled.
-3- Edit Category Item not handled.
+1. Sort Menu Items not supported for Categories and Category Items.
+2. Delete Category Item not handled.
+3. Edit Category Item not handled.
