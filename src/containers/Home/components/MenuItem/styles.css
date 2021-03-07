@@ -1,0 +1,8 @@
+.menu-item-container:hover {
+  background-color: #f2f5f7 !important;
+}
+
+.item.menu-item-container {
+  padding: 1rem !important; /*i hate it */
+  border-radius: 5px !important; /*i hate importnant :/ */
+}

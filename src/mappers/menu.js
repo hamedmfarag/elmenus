@@ -19,7 +19,7 @@ export function menuItemMapper(item) {
     price: item.price,
     image:
       item.image ||
-      "https://w7.pngwing.com/pngs/815/308/png-transparent-sushi-japanese-cuisine-euclidean-vecteur-square-sushi-food-logo-happy-birthday-vector-images.png",
+      "https://cdn.iconscout.com/icon/free/png-256/fast-food-1851561-1569286.png",
   };
 }
 
