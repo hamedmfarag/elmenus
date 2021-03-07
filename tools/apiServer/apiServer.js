@@ -98,6 +98,39 @@ server.post(`${baseUrl}/category`, (req, res, next) => {
   }
 });
 
+// delete Existing Category
+server.delete(`${baseUrl}/category`, (req, res, next) => {
+  const db = router.db;
+  const table = db.get("categories");
+
+  if (!req.body.id) {
+    res.statusCode = 400;
+    res.send({
+      code: 100,
+      message: "fields_required",
+    });
+  } else {
+    const categories = router.db.get("categories").value();
+    const categoryIndex = _.findIndex(categories, function (o) {
+      return o.id === req.body.id;
+    });
+
+    if (categoryIndex === -1) {
+      res.statusCode = 400;
+      res.send({
+        code: 105,
+        message: "not_exist",
+      });
+    } else {
+      categories.splice(categoryIndex, 1);
+
+      table.write();
+      res.statusCode = 200;
+      res.send({ id: req.body.id });
+    }
+  }
+});
+
 // Edit Existing Category
 server.put(`${baseUrl}/category`, (req, res, next) => {
   const db = router.db;

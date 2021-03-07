@@ -8,13 +8,14 @@ import {
   Header,
   Icon,
   Modal,
+  Confirm,
 } from "semantic-ui-react";
 import { useTranslation } from "react-i18next";
 
 import Categories from "./Categories";
 import EditCategory from "../EditCategory";
 
-import { getMenuData } from "../../../../apis";
+import { getMenuData, deleteCategory } from "../../../../apis";
 
 import "./styles.css";
 
@@ -26,6 +27,10 @@ export default function Menu(props) {
   const [menu, setMenu] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [categoryDataToEdit, setCategoryDataToEdit] = useState({});
+  const [isConfirmOpen, setIsConfirmOpen] = useState(false);
+  const [selectedCategoryIdToDelete, setSelectedCategoryIdToDelete] = useState(
+    {}
+  );
 
   useEffect(() => {
     fetchData();
@@ -53,6 +58,29 @@ export default function Menu(props) {
   const handleCategoryEdit = (category) => {
     setIsModalOpen(true);
     setCategoryDataToEdit(category);
+  };
+
+  const handleCategoryDelete = (category) => {
+    setIsConfirmOpen(true);
+    setSelectedCategoryIdToDelete(category);
+  };
+
+  const handleConfirmCategoryDelete = async () => {
+    const [data, error] = await deleteCategory(selectedCategoryIdToDelete.id);
+
+    if (error) {
+      toast.error(error);
+    } else {
+      toast.success(
+        t("ADMIN.ADDCATEGORY.DELETED", {
+          name: selectedCategoryIdToDelete.name,
+        })
+      );
+
+      setMenu(menu.filter((item) => item.id !== data.id));
+      setIsConfirmOpen(false);
+      setSelectedCategoryIdToDelete({});
+    }
   };
 
   const handleAddItem = (catIndex, item) => {
@@ -101,6 +129,7 @@ export default function Menu(props) {
           actions: {
             onAddItem: handleAddItem,
             onCategoryEdit: handleCategoryEdit,
+            onCategoryDelete: handleCategoryDelete,
           },
         })}
         styled
@@ -122,6 +151,18 @@ export default function Menu(props) {
           />
         </Modal.Content>
       </Modal>
+      <Confirm
+        open={isConfirmOpen}
+        size="mini"
+        content={t("ADMIN.CATEGORY.MESSAGE.DELETE", {
+          name: selectedCategoryIdToDelete.name,
+        })}
+        onCancel={() => {
+          setIsConfirmOpen(false);
+          setSelectedCategoryIdToDelete({});
+        }}
+        onConfirm={handleConfirmCategoryDelete}
+      />
     </>
   );
 }

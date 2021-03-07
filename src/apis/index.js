@@ -104,3 +104,21 @@ export async function editCategory(id, name, description) {
     return [mappedUser, undefined];
   }
 }
+
+export async function deleteCategory(id) {
+  const [response, error] = await handleAsync(
+    requester({
+      method: "DELETE",
+      url: process.env.REACT_APP_CATEGORY_API_URL,
+      data: {
+        id,
+      },
+    })
+  );
+
+  if (error) {
+    return [undefined, errorBuilderMessage(error)];
+  } else {
+    return [response.data, undefined];
+  }
+}

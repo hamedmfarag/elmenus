@@ -53,7 +53,15 @@ export default function Categories(props) {
                 }}
               />
               <Button.Or />
-              <Button size="mini" color="red" icon="trash alternate" />
+              <Button
+                size="mini"
+                color="red"
+                icon="trash alternate"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  actions.onCategoryDelete(cat);
+                }}
+              />
             </Button.Group>
           </article>
         </Accordion.Title>
