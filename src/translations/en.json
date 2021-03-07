@@ -2,6 +2,7 @@
   "COMMON.SERVER.ERROR": "Something went wrong, please try again later!",
   "COMMON.REQUIRED": "Some Fields are missing!",
   "COMMON.ITEMNOTEXIST": "Not Exist!",
+  "COMMON.MESSAGE.BACKHOME": "Back to Home",
   "COMMON.LABEL.SAVE": "Save",
   "COMMON.MESSAGE.NOMENUFOUND": "No Menu Found!",
   "COMMON.MESSAGE.NODATAAVAL": "No Data Available!",

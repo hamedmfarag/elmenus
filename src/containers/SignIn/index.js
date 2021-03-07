@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import {
   Button,
   Form,
@@ -15,6 +15,8 @@ import queryString from "query-string";
 import { UserContext } from "../../userContext";
 
 import { signIn } from "../../apis";
+
+import "./styles.css";
 
 export default function SignIn(props) {
   const { route } = props;
@@ -83,10 +85,15 @@ export default function SignIn(props) {
             placeholder={t("SIGNIN.PAGE.PASSWORD")}
           />
           <Divider />
-          <Button type="submit" disabled={isSubmitting}>
-            <Loader active={isLoading} inline size="mini" />{" "}
-            {t("SIGNIN.PAGE.SIGNIN")}
-          </Button>
+          <article className="signin-container__footer">
+            <Link to={process.env.REACT_APP_ROUTE_HOME}>
+              {t("COMMON.MESSAGE.BACKHOME")}
+            </Link>
+            <Button type="submit" disabled={isSubmitting}>
+              <Loader active={isLoading} inline size="mini" />{" "}
+              {t("SIGNIN.PAGE.SIGNIN")}
+            </Button>
+          </article>
         </Form>
       </Segment>
     </>
