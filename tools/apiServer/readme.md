@@ -3,6 +3,8 @@
 ## Used Packages
 
 - json-server
+- lodash
+- uuid
 
 ## Description
 
