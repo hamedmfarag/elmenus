@@ -33,37 +33,46 @@ Your app is ready to be deployed!
 ## File Structure
 
 ```
-| .env.development
-| .env.production
-+---public
-+---src
-| | App.js
-| | i18n.js
-| | index.js
-| | routes.js
-| | userContext.js
-| +---apis
-| +---components
-| +---config
-| +---containers
+| .env.development          # contains all need variables for development environment
+| .env.production           # contains all env variables for production environment
++---public                  # contains html file as page template.
++---src 
+| | App.js                  # the application file, contains toaster setup and routes reference.
+| | i18n.js                 # setup file for i18n framework.
+| | index.js                # the entry point for react app.
+| | routes.js               # all routes needed in the application. (contains the linking between layouts and containers).
+| | userContext.js          # store logged in user via React Context API.
+| +---apis                  # contains all functions needed to handle the api calls.
+| +---components            # contains all shared components that will be used in containers and layouts.              
+| +---containers            # contains the pages for this app (Home, Sign In and Admin Pages).
 | | +---404
 | | +---Admin
 | | +---Home
 | | +---SignIn
-| +---layouts
-| | +---Auth
-| | +---Private
-| | +---Public
-| +---mappers
-| +---resources
-| +---services
-| | +---errorBuilder
-| | +---handleAsync
-| | +---requester
-| \---translations
-\---tools
-\---apiServer
+| +---layouts               # containes all layouts (parent components for containers).
+| | +---Auth                # layout for sign in page.
+| | +---Private             # layout for Admin page.
+| | +---Public              # layout for Home Page (Menu).
+| +---mappers               # format the shape of object that returned from api calls (used in apis folder).
+| +---resources             # contains enum to avoid any static strings.
+| +---services              # contains utilities and helpers.
+| | +---errorBuilder        # function to check for message code to return the suitable message.
+| | +---handleAsync         # simplify promise objects to use easily later.
+| | +---requester           # the core function for calling api (bases on axios)
+| \---translations          # contains the language files (en and ar).
++---tools
+| +---apiServer             # the api server
 ```
+
+## Used Packages
+
+1. Semantic React UI
+2. axios
+3. i18next & react-i18next
+4. immutability-helper
+5. loglevel
+6. query-string
+7. react-toastify
 
 ## Known bugs
 
